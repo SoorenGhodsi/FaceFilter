@@ -1,5 +1,5 @@
 # FaceFilter
 
-CREDITS:
-Seth Eshraji, Sooren Ghodsi, Joseph Gong, Ethan Li
+
+CREDITS: Seth Eshraghi, Sooren Ghodsi, Joseph Gong, Ethan Li
 
