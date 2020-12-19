@@ -11,9 +11,6 @@ eye_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_eye.xml')
 #read image
 img = cv2.imread('/Users/seth_eshraghi/Documents/FaceFilter/recognition/assets/people.jpg')
 
-# #convert to gray
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
 ##convert to gray
 #gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 #
