@@ -13,9 +13,11 @@ img = cv2.imread('assets/people.jpg')
 
 #convert to gray
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+print('yes')
 
 #detect faces
 faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+print('yes')
 
 #for each face
 for (x,y,w,h) in faces:
@@ -31,6 +33,9 @@ for (x,y,w,h) in faces:
         #draw retangle around eye
         cv2.rectangle(roi_c, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
  
+print('yes')
 cv2.imshow('img',img) #shows image
-cv2.waitKey(1) #waits until a key is pressed to progress
+print('yes')
+print('yes')
 cv2.destroyAllWindows() #closes windows
+cv2.waitKey(1) #waits until a key is pressed to progress
