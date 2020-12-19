@@ -1,8 +1,8 @@
-from user_interface.recognitioninterface import HarmonizerInterface
+from user_interface.recognitioninterface import RecognitionInterface
 
 
 def main():
-    HarmonizerInterface()
+    RecognitionInterface()
 
 
 if __name__ == '__main__':
