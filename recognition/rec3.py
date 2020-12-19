@@ -1,14 +1,14 @@
 import cv2
 import numpy as np 
 
-path = '/Users/YOUR/PATH/HERE/share/opencv4/haarcascades/'
+# path = '/Users/YOUR/PATH/HERE/share/opencv4/haarcascades/'
 
 #get facial classifiers
-face_cascade = cv2.CascadeClassifier(path +'haarcascade_frontalface_default.xml')
-eye_cascade = cv2.CascadeClassifier(path +'haarcascade_eye.xml')
+face_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_eye.xml')
 
 #read images
-witch = cv2.imread('witch.png')
+witch = cv2.imread('assets/disguise.png')
 
 #get shape of witch
 original_witch_h,original_witch_w,witch_channels = witch.shape
