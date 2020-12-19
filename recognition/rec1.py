@@ -9,7 +9,6 @@ face_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_frontalface_d
 eye_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_eye.xml')
 
 #read image
-<<<<<<< HEAD
 img = cv2.imread('/Users/ethan/Documents/FaceFilter/recognition/assets/people.jpg')
 
 # #convert to gray
@@ -32,7 +31,6 @@ gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 #         #draw retangle around eye
 #         cv2.rectangle(roi_c, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
 # 
-=======
 img = cv2.imread('assets/people.jpg')
 
 #convert to gray
@@ -55,7 +53,6 @@ for (x,y,w,h) in faces:
         #draw retangle around eye
         cv2.rectangle(roi_c, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
 
->>>>>>> origin/main
 cv2.imshow('img',img) #shows image
 cv2.waitKey(0) #waits until a key is pressed to progress
 cv2.destroyAllWindows() #closes windows
