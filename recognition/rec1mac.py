@@ -1,6 +1,8 @@
 import cv2
 import numpy as np 
 from matplotlib import pyplot as plt
+from PIL import Image
+import os
 
 #path to classifiers
 # path = '/Users/Sooren/opt/anaconda3/envs/learn-env/share/opencv4/haarcascades/'
@@ -11,8 +13,6 @@ eye_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_eye.xml')
 
 #read image
 img = cv2.imread('assets/people.jpg') 
-if img is None:
-    print("Check file path")
 
 #convert to gray
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -33,8 +33,11 @@ for (x,y,w,h) in faces:
     for (ex,ey,ew,eh) in eyes:
         #draw retangle around eye
         cv2.rectangle(roi_c, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
- 
-cv2.imshow('img', img) #shows image
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-cv2.waitKey(1)
+
+cv2.imwrite('bruh.jpg', img) 
+Image.open(r"bruh.jpg").show()
+os.remove('bruh.jpg')
+# cv2.imshow('img', img) #shows image
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
+# cv2.waitKey(1)
