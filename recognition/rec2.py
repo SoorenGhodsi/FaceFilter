@@ -43,13 +43,13 @@ for (x,y,w,h) in faces:
     face_y2 = face_y1 + face_h
 
     #witch size in relation to face by scaling
-    witch_width = int(1.5 * face_w)
+    witch_width = int(face_w)
     witch_height = int(witch_width * original_witch_h / original_witch_w)
     
     #setting location of coordinates of witch
     witch_x1 = face_x2 - int(face_w/2) - int(witch_width/2)
     witch_x2 = witch_x1 + witch_width
-    witch_y1 = face_y1 - int(face_h*1.25)
+    witch_y1 = face_y1 - int(face_h / 2.5)
     witch_y2 = witch_y1 + witch_height 
 
     #check to see if out of frame
