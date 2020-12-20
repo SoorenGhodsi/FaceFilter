@@ -10,4 +10,5 @@ pip install scipy
 ```
 
 
-CREDITS: Seth Eshraghi, Sooren Ghodsi, Joseph Gong, Ethan Li
+## Credits
+Sooren Ghodsi, Seth Eshraghi, Joseph Gong, Ethan Li
