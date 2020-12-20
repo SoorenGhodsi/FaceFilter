@@ -1,5 +1,5 @@
 '''
-Adds filters on images with multiple people
+Adds filters to still images in the asset folder
 '''
 
 import cv2
@@ -8,8 +8,8 @@ import numpy as np
 from scipy import ndimage
 
 #get facial classifiers
-face_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_frontalface_default.xml')
-eye_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_eye.xml')
+face_cascade = cv2.CascadeClassifier('xml-files/haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('xml-files/haarcascade_eye.xml')
 
 #read images
 img = cv2.imread('assets/people1.jpg')
