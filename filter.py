@@ -10,7 +10,7 @@ eye_cascade = cv2.CascadeClassifier('xml-files/haarcascade_eye.xml')
 
 #read images
 img = cv2.imread('assets/people1.jpg')
-fltr = cv2.imread('assets/goggles.png')
+fltr = cv2.imread('assets/dog.png')
 
 #get shape of filter
 original_fltr_h,original_fltr_w,fltr_channels = fltr.shape
