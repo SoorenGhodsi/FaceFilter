@@ -1,7 +1,4 @@
-'''
-Adds filters on live video of the user
-'''
-
+'''    This program adds filters to live video of the user    '''
 import cv2
 import time
 import math
@@ -15,13 +12,13 @@ eye_cascade = cv2.CascadeClassifier('xml-files/haarcascade_eye.xml')
 #read images
 fltr = cv2.imread('assets/goggles.png')
 
-#get shape of fltr
+#get shape of filter
 original_fltr_h,original_fltr_w,fltr_channels = fltr.shape
 
 #convert to gray
 fltr_gray = cv2.cvtColor(fltr, cv2.COLOR_BGR2GRAY)
 
-#create mask and inverse mask of fltr
+#create mask and inverse mask of filter
 ret, original_mask = cv2.threshold(fltr_gray, 10, 255, cv2.THRESH_BINARY_INV)
 original_mask_inv = cv2.bitwise_not(original_mask)
 
@@ -31,19 +28,18 @@ ret, img = cap.read()
 img_h, img_w = img.shape[:2]
 
 while True:   #continue to run until user breaks loop
-    
+
     #read each frame of video and convert to gray
     ret, img = cap.read()
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
     #find faces in image using classifier
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-
     
     #for every face found:
     for (x,y,w,h) in faces:
-        '''
-        #retangle for testing purposes
+        '''    TESTING PURPOSES
+        #draw retangle around face
         img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
 
         #select face as region of interest 
@@ -57,28 +53,6 @@ while True:   #continue to run until user breaks loop
             #draw retangle around eye
             eye_y.append(ey)
             cv2.rectangle(roi_c, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
-        '''
-
-        '''
-        #sort eye y-values
-        eye_y = sorted(eye_y)
-    
-        #rotate filter if eyes are not in a straight line
-        if len(eye_y) >= 2:
-            diff = (eye_y[0] - eye_y[1])
-        
-            if len(eye_y) == 3:
-                if abs(eye_y[1] - eye_y[0]) < abs(eye_y[2] - eye_y[1]):
-                    diff = eye_y[1] - eye_y[0]
-                else:
-                    diff = eye_y[2] - eye_y[1]
-            
-            angle = math.degrees(math.atan(diff / int(0.5 * w)))
-        
-            #rotate filter, mask, and inverse mask by degrees
-            fltr2 = ndimage.rotate(fltr, angle)
-            original_mask2 = ndimage.rotate(original_mask, angle)
-            original_mask_inv2 = ndimage.rotate(original_mask_inv, angle)
         '''
         
         #declare new filter

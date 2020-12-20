@@ -1,7 +1,4 @@
-'''
-Adds filters to still images in the asset folder
-'''
-
+'''    This program adds filters to still images placed in the asset folder   '''
 import cv2
 import math
 import numpy as np 
@@ -26,27 +23,25 @@ img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 fltr_gray = cv2.cvtColor(fltr, cv2.COLOR_BGR2GRAY)
 
 #create mask and inverse mask of filter
-#use THRESH_BINARY_INV with transparent background
-#use THRESH_BINARY with white background
+#use cv2.THRESH_BINARY_INV with a transparent background
+#and cv2.THRESH_BINARY with a white background
 ret, original_mask = cv2.threshold(fltr_gray, 10, 255, cv2.THRESH_BINARY_INV)
 original_mask_inv = cv2.bitwise_not(original_mask)
 
 #find faces in image using classifier
 faces = face_cascade.detectMultiScale(img_gray, 1.3, 5)
 
-for (x,y,w,h) in faces:
-    #retangle for testing purposes
-    # img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
-    
+for (x,y,w,h) in faces:    
     #declare new filter, mask, and inverse mask
     fltr2 = fltr
     original_mask2 = original_mask
     original_mask_inv2 = original_mask_inv
 
-    #select face as region of interest 
+    #select upper left side of face as region of interest 
     roi_lg = img_gray[y:y+int(0.7*h),x:x+int(0.5*h)]
     roi_lc = img[y:y+int(0.7*h),x:x+int(0.5*h)]
-    #within region of interest find eyes
+    
+    #within region of interest find possible left eyes
     eyesl = eye_cascade.detectMultiScale(roi_lg)
     
     #make empty list
@@ -58,17 +53,12 @@ for (x,y,w,h) in faces:
         eye_x[0] = eyesl[0][0]
         eye_y[0] = eyesl[0][1]
         
-    '''
-    #for each eye
-    for (ex,ey,ew,eh) in eyesl:
-        #draw retangle around eye
-        cv2.rectangle(roi_lc, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
-    '''
+
     
-    #select face as region of interest 
+    #select upper right side of face as region of interest 
     roi_rg = img_gray[y:y+int(0.7*h),x+int(0.5*h):x+h]
     roi_rc = img[y:y+int(0.7*h),x+int(0.5*h):x+h]
-    #within region of interest find eyes
+    #within region of interest find possible right eyes
     eyesr = eye_cascade.detectMultiScale(roi_rg)
     
     #take the first eye's x and y values
@@ -76,10 +66,17 @@ for (x,y,w,h) in faces:
         eye_x[1] = eyesr[0][0]
         eye_y[1] = eyesr[0][1]
         
-    '''
-    #for each eye
+    '''    TESTING PURPOSES
+    #retangle around face
+    img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+    
+    #rectangles around the eyes
+    for (ex,ey,ew,eh) in eyesl:
+        #draw retangle around left eye
+        cv2.rectangle(roi_lc, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+
     for (ex,ey,ew,eh) in eyesr:
-        #draw retangle around eye
+        #draw retangle around right eye
         cv2.rectangle(roi_rc, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
     '''
     
@@ -88,9 +85,11 @@ for (x,y,w,h) in faces:
         #find the angle between the eyes
         diff = eye_y[0] - eye_y[1]
         if diff < 0:
-            angle = -1* math.degrees(math.atan((math.sqrt(abs(diff)) * 1) / (abs(eye_x[1] - eye_x[0]) * 2)))
+            angle = -1* math.degrees(math.atan((math.sqrt(abs(diff)) * 1)/ 
+                (abs(eye_x[1] - eye_x[0]) * 2)))
         else:
-            angle = math.degrees(math.atan((math.sqrt(diff) * 1) / (abs(eye_x[1] - eye_x[0]) * 2)))
+            angle = math.degrees(math.atan((math.sqrt(diff) * 1)/ 
+                (abs(eye_x[1] - eye_x[0]) * 2)))
         
         #rotate filter, mask, and inverse mask by degrees
         fltr2 = ndimage.rotate(fltr, angle)
