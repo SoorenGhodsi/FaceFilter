@@ -13,7 +13,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_frontalface_d
 eye_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_eye.xml')
 
 #read images
-fltr = cv2.imread('assets/heart.png')
+fltr = cv2.imread('assets/goggles.png')
 
 #get shape of fltr
 original_fltr_h,original_fltr_w,fltr_channels = fltr.shape
@@ -42,6 +42,7 @@ while True:   #continue to run until user breaks loop
     
     #for every face found:
     for (x,y,w,h) in faces:
+        '''
         #retangle for testing purposes
         img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
 
@@ -55,7 +56,8 @@ while True:   #continue to run until user breaks loop
         for (ex,ey,ew,eh) in eyes:
             #draw retangle around eye
             eye_y.append(ey)
-            cv2.rectangle(roi_c, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)    
+            cv2.rectangle(roi_c, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+        '''
 
         '''
         #sort eye y-values
