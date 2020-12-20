@@ -9,7 +9,6 @@ We were inspired by popular Instagram and Snapchat filters and wanted to see if 
 
 ## Screenshots
 ![Face Recognition](https://github.com/SoorenGhodsi/FaceFilter/blob/main/screenshots/Face%20Recognition.jpg)
-![Dog](https://github.com/SoorenGhodsi/FaceFilter/blob/main/screenshots/FIlter%201.jpg)
 ![Flower](https://github.com/SoorenGhodsi/FaceFilter/blob/main/screenshots/Flower%20Filter.jpg)
 ![Helmet](https://github.com/SoorenGhodsi/FaceFilter/blob/main/screenshots/Helmet%20Filter.jpg)
 ![Live](https://github.com/SoorenGhodsi/FaceFilter/blob/main/screenshots/Live%20Filter.jpg)
