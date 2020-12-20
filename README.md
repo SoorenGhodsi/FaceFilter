@@ -3,7 +3,7 @@
 Face Filter is a program that places select filters onto faces that are detected in the given image or the live feed.
 
 ### Installation
-To use Face Filters, you must install numpy version 1.19.13, cv2, scipy 
+To use Face Filters, you must install numpy version 1.19.13, cv2, and scipy.
 
 ```
 pip install opencv-contrib-python
