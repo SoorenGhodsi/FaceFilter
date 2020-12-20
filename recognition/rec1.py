@@ -9,7 +9,7 @@ face_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_frontalface_d
 eye_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_eye.xml')
 
 #read image
-img = cv2.imread('assets/people4.jpg')
+img = cv2.imread('assets/people.jpg')
 
 #convert to gray
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
