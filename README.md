@@ -1,6 +1,6 @@
-# ReadMe
+# FaceFilter
 
-Face Filters is a program that places select filters onto faces that are detected in the given image or the live feed.
+Face Filter is a program that places select filters onto faces that are detected in the given image or the live feed.
 
 ## Usage
 
