@@ -93,7 +93,7 @@ while True:   #continue to run until user breaks loop
     cv2.imshow('img',img) 
 
     #if user pressed 'q' break
-    if cv2.waitKey(0) == ord('q'): # 
+    if cv2.waitKey(1) == ord('q'): # 
         break;
 
 cap.release() #turn off camera 
