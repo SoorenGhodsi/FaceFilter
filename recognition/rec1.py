@@ -32,5 +32,5 @@ for (x,y,w,h) in faces:
         cv2.rectangle(roi_c, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)
  
 cv2.imshow('img',img) #shows image
-cv2.waitKey(1) #waits until a key is pressed to progress
+cv2.waitKey(0) #waits until a key is pressed to progress
 cv2.destroyAllWindows() #closes windows
