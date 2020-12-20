@@ -2,7 +2,7 @@ import cv2
 import numpy as np 
 
 #path to classifiers
-# path = '/Users/Sooren/opt/anaconda3/envs/learn-env/share/opencv4/haarcascades/'
+# path = '/Users/YOUR_PC_NAME/opt/anaconda3/envs/learn-env/share/opencv4/haarcascades/'
 
 #get image classifiers
 face_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_frontalface_default.xml')
