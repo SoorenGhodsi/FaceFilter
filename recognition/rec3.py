@@ -2,6 +2,7 @@ import cv2
 import math
 import numpy as np 
 from scipy import ndimage
+import time
 
 # path = '/Users/YOUR/PATH/HERE/share/opencv4/haarcascades/'
 
@@ -35,12 +36,14 @@ while True:   #continue to run until user breaks loop
 
     #find faces in image using classifier
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
     
     #for every face found:
     for (x,y,w,h) in faces:
         #retangle for testing purposes
-        #img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
-        
+        img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+
+    
         #select face as region of interest 
         roi_g = gray[y:y+h,x:x+h]
         roi_c = img[y:y+h,x:x+h]
@@ -52,7 +55,8 @@ while True:   #continue to run until user breaks loop
             #draw retangle around eye
             eye_y.append(ey)
             cv2.rectangle(roi_c, (ex,ey),(ex+ew,ey+eh),(0,255,0),2)    
-            
+
+        '''
         #sort eye y-values
         eye_y = sorted(eye_y)
     
@@ -72,13 +76,14 @@ while True:   #continue to run until user breaks loop
             fltr2 = ndimage.rotate(fltr, angle)
             original_mask2 = ndimage.rotate(original_mask, angle)
             original_mask_inv2 = ndimage.rotate(original_mask_inv, angle)
+        '''
+        fltr2 = fltr
+        #convert mask to gray
+        fltr2_gray = cv2.cvtColor(fltr2, cv2.COLOR_BGR2GRAY)
     
-            #convert mask to gray
-            fltr2_gray = cv2.cvtColor(fltr2, cv2.COLOR_BGR2GRAY)
-    
-            #recreate mask and inverse mask for rotated filter
-            ret, original_mask2 = cv2.threshold(fltr2_gray, 10, 255, cv2.THRESH_BINARY_INV)
-            original_mask_inv2 = cv2.bitwise_not(original_mask2)    
+        #recreate mask and inverse mask for rotated filter
+        ret, original_mask2 = cv2.threshold(fltr2_gray, 10, 255, cv2.THRESH_BINARY_INV)
+        original_mask_inv2 = cv2.bitwise_not(original_mask2)    
             
             
         #coordinates of face region
@@ -128,6 +133,8 @@ while True:   #continue to run until user breaks loop
 
         #put back in original image
         img[fltr_y1:fltr_y2, fltr_x1:fltr_x2] = dst
+
+        time.sleep(.07)
 
         break
         
