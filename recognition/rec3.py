@@ -1,10 +1,12 @@
+'''
+Adds filters on live video of the user
+'''
+
 import cv2
+import time
 import math
 import numpy as np 
 from scipy import ndimage
-import time
-
-# path = '/Users/YOUR/PATH/HERE/share/opencv4/haarcascades/'
 
 #get facial classifiers
 face_cascade = cv2.CascadeClassifier('haarcascade-xmls/haarcascade_frontalface_default.xml')
@@ -43,7 +45,6 @@ while True:   #continue to run until user breaks loop
         #retangle for testing purposes
         img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
 
-    
         #select face as region of interest 
         roi_g = gray[y:y+h,x:x+h]
         roi_c = img[y:y+h,x:x+h]
@@ -77,14 +78,16 @@ while True:   #continue to run until user breaks loop
             original_mask2 = ndimage.rotate(original_mask, angle)
             original_mask_inv2 = ndimage.rotate(original_mask_inv, angle)
         '''
+        
+        #declare new filter
         fltr2 = fltr
+        
         #convert mask to gray
         fltr2_gray = cv2.cvtColor(fltr2, cv2.COLOR_BGR2GRAY)
     
         #recreate mask and inverse mask for rotated filter
         ret, original_mask2 = cv2.threshold(fltr2_gray, 10, 255, cv2.THRESH_BINARY_INV)
         original_mask_inv2 = cv2.bitwise_not(original_mask2)    
-            
             
         #coordinates of face region
         face_w = w
@@ -139,7 +142,7 @@ while True:   #continue to run until user breaks loop
         break
         
     #display image
-    cv2.imshow('img',img) 
+    cv2.imshow('Live Face Filter',img) 
 
     #if user pressed 'q' break
     if cv2.waitKey(1) == ord('q'): # 
