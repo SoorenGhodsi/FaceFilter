@@ -9,8 +9,8 @@ face_cascade = cv2.CascadeClassifier('xml-files/haarcascade_frontalface_default.
 eye_cascade = cv2.CascadeClassifier('xml-files/haarcascade_eye.xml')
 
 #read images
-img = cv2.imread('assets/people1.jpg')
-fltr = cv2.imread('assets/dog.png')
+img = cv2.imread('assets/people3.jpg')
+fltr = cv2.imread('assets/helmet.png')
 
 #get shape of filter
 original_fltr_h,original_fltr_w,fltr_channels = fltr.shape
@@ -52,8 +52,6 @@ for (x,y,w,h) in faces:
     if len(eyesl) > 0:
         eye_x[0] = eyesl[0][0]
         eye_y[0] = eyesl[0][1]
-        
-
     
     #select upper right side of face as region of interest 
     roi_rg = img_gray[y:y+int(0.7*h),x+int(0.5*h):x+h]
