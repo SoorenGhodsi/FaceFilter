@@ -1,6 +1,5 @@
 # FaceFilter
 <h1 align="center">
-  <br>
   <img src="https://github.com/SoorenGhodsi/FaceFilter/blob/main/screenshots/Cover.jpg" alt="FaceFilter" width="500">
 </h1>
 Face Filter is a program that places select filters onto faces that are detected in the given image or the live feed.
